@@ -2,11 +2,14 @@ import argparse
 import logging
 import os
 from datetime import datetime, timedelta
+from skimage import img_as_float32
+from brisque import BRISQUE
 
 import numpy as np
 import torch
 import random
 import config
+import torchvision
 from backbones import get_model
 from heads import get_head
 from dataset.dataset import get_dataloader
@@ -20,6 +23,7 @@ from utils.utils_callbacks import CallBackLogging, CallBackVerification
 from utils.utils_distributed_sampler import setup_seed
 from utils.utils_logging import AverageMeter, init_logging
 from torch.distributed.algorithms.ddp_comm_hooks.default_hooks import fp16_compress_hook
+import pyiqa
 
 assert torch.__version__ >= "1.12.0", "In order to enjoy the features of the new torch, \
 we have upgraded the torch to 1.12.0. torch before than 1.12.0 may not work in the future."
@@ -30,6 +34,21 @@ world_size = int(os.environ["WORLD_SIZE"])
 distributed.init_process_group("nccl")
 
 
+def generate_alpha(img, iqa, thresh):
+    device = img.device
+    BS, C, H, W = img.shape
+    alpha = torch.zeros((BS, 1), dtype=torch.float32, device=device)
+
+    score = iqa(img)
+    threshold = thresh
+    for i in range(BS):
+        if score[i] == threshold:
+            alpha[i] = 0.5
+        elif score[i] < threshold:
+            alpha[i] = 0.5 - (threshold - score[i])
+        else:
+            alpha[i] = 0.5 + (score[i] - threshold)
+    return alpha
 
 def main(args):
     setup_seed(seed=args.seed, cuda_deterministic=False)
@@ -118,6 +137,7 @@ def main(args):
                 p.requires_grad = True
 
 
+
     if args.optimizer == "sgd":
         total_params = sum(p.numel() for p in backbone.parameters())
         trainable_params = sum(p.numel() for p in backbone.parameters() if p.requires_grad) + sum(p.numel() for p in head.parameters() if p.requires_grad)
@@ -138,6 +158,7 @@ def main(args):
             lr=args.lr, weight_decay=args.weight_decay)
     else:
         raise
+
 
     args.total_batch_size = args.batch_size * world_size
     args.warmup_step = args.num_image // args.total_batch_size * args.warmup_epoch
@@ -180,6 +201,16 @@ def main(args):
     loss_am = AverageMeter()
     amp = torch.cuda.amp.grad_scaler.GradScaler(growth_interval=100)
 
+    if args.iqa == "brisque":
+        iqa = pyiqa.create_metric('brisque').cuda()
+        threshold = args.threshold
+    elif args.iqa == "cnniqa":
+        iqa = pyiqa.create_metric('cnniqa').cuda()
+        threshold = args.threshold
+
+    logging.info("Total Parameters: %d", sum(p.numel() for p in iqa.parameters()))
+    logging.info("IQA: %d", iqa.lower_better)
+
     for epoch in range(start_epoch, args.num_epoch):
 
         if isinstance(train_loader, DataLoader):
@@ -187,7 +218,8 @@ def main(args):
         for _, (img, local_labels) in enumerate(train_loader):
             global_step += 1
 
-            local_embeddings = backbone(img)
+            alpha = generate_alpha(img.clone(), iqa, threshold)
+            local_embeddings = backbone(img, alpha)
             loss: torch.Tensor = head(local_embeddings, local_labels)
 
             assert loss.requires_grad
@@ -260,6 +292,7 @@ def main(args):
     torch.distributed.barrier()
     destroy_process_group()                                
     return 
+
 
 if __name__ == "__main__":
     torch.backends.cudnn.benchmark = True

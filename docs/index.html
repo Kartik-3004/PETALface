@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <style>
+        td,
+        th {
+            border: 0px solid black;
+        }
+
+        img {
+            padding: 5px;
+        }
+    </style>
+
+    <title>Hyp-OC</title>
+
+    <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
+
+    <link rel="shortcut icon" href="./static/images/jhu_web.png" />
+
+    <link rel="stylesheet" href="./static/css/bulma.min.css">
+    <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+    <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+    <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+    <link rel="stylesheet" href="./static/css/index.css">
+    <link rel="icon" href="./static/images/favicon.svg">
+    <link rel="stylesheet" href="https://unpkg.com/image-compare-viewer/dist/image-compare-viewer.min.css">
+    <link rel="stylesheet" href="css/app.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+
+    <script src="https://unpkg.com/image-compare-viewer/dist/image-compare-viewer.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script defer src="./static/js/fontawesome.all.min.js"></script>
+    <script src="./static/js/bulma-carousel.min.js"></script>
+    <script src="./static/js/bulma-slider.min.js"></script>
+    <script src="./static/js/index.js"></script>
+
+</head>
+
+<body>
+
+
+    <section class="hero">
+        <div class="hero-body">
+            <div class="container is-max-desktop">
+                <div class="columns is-centered">
+                    <div class="column has-text-centered">
+                        <h1 class="title is-2 publication-title"> PETAL<i>face</i>: Parameter Efficient Transfer
+                            Learning<br>for Low-resolution Face Recognition
+                        </h1>
+                        <h2 style="font-size: 1.5em; color: dimgray; margin-bottom: .5em; margin-top: -.5em;">FG 2024
+                        </h2>
+                        <div class="is-size-5 publication-authors">
+                            <!-- Group of first four authors -->
+                            <div class="authors-group">
+                                <span class="author-block">
+                                    <a href="https://kartik-3004.github.io/portfolio/" target="_blank">Kartik
+                                        Narayan</a>,
+                                </span>
+                                <span class="author-block">
+                                    <a href="https://scholar.google.com/citations?user=AkEXTbIAAAAJ&hl=en"
+                                        target="_blank">Vishal M. Patel</a>
+                                </span>
+                            </div>
+                        </div>
+
+
+                        <div class="is-size-5 publication-authors">
+                            <span class="author-block">Johns Hopkins University</span>
+                        </div>
+
+                        <div class="column has-text-centered">
+                            <a href="as"></a>
+                            </span>
+                        </div>
+
+                        <div class="column has-text-centered">
+                            <div class="publication-links">
+                                <!-- PDF Link. -->
+                                <!-- <span class="link-block">
+                                    <a href=""
+                                        class="external-link button is-normal is-rounded is-dark" target="_blank">
+                                        <span class="icon">
+                                            <i class="fas fa-file-pdf"></i>
+                                        </span>
+                                        <span>Paper</span>
+                                    </a>
+                                </span> -->
+                                <!-- <span class="link-block">
+                <a href=""
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fas fa-file-pdf"></i>
+                  </span>
+                  <span>Supplementary material</span>
+                </a>
+              </span> -->
+                                <span class="link-block">
+                                    <a href="https://arxiv.org/pdf/2404.14406.pdf"
+                                        class="external-link button is-normal is-rounded is-dark">
+                                        <span class="icon">
+                                            <i class="ai ai-arxiv"></i>
+                                        </span>
+                                        <span>Arxiv</span>
+                                    </a>
+                                </span>
+                                <span class="link-block">
+                                    <a href="https://github.com/Kartik-3004/hyp-oc"
+                                        class="external-link button is-normal is-rounded is-dark">
+                                        <span class="icon">
+                                            <i class="fab fa-github"></i>
+                                        </span>
+                                        <span>Code</span>
+                                    </a>
+                                </span>
+                                <span class="link-block">
+                                    <a href="https://huggingface.co/kartiknarayan/hyp-oc"
+                                        class="external-link button is-normal is-rounded is-dark">
+                                        <span>Huggingface Model</span>
+                                    </a>
+                                </span>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container is-max-desktop">
+            <!-- Abstract. -->
+            <div class="columns is-centered has-text-centered">
+                <div class="column is-four-fifths">
+
+                    <h2 class="title is-3">Motivation & Contribution</h2>
+                    <img src="./static/images/visual_abstract.png" alt="" border="0" height="300" width="750">
+                    <div class="content has-text-justified">
+                        <p>Face recognition technology has become an integral part of modern security systems and user
+                            authentication processes.
+                            However, these systems are vulnerable to spoofing attacks and can easily be circumvented.
+                            Most prior research in face
+                            anti-spoofing (FAS) approaches it as a two-class classification task where models are
+                            trained on real samples and known
+                            spoof attacks and tested for detection performance on unknown spoof attacks. However, in
+                            practice, FAS should be treated
+                            as a one-class classification task where, while training, one cannot assume any knowledge
+                            regarding the spoof samples a
+                            priori. Hyp-OC, is the first work exploring hyperbolic embeddings for one-class face
+                            anti-spoofing (OC-FAS).
+                        </p>
+                        <ul>
+                            <li>
+                                We show that using hyperbolic space helps learn a better decision boundary than the
+                                Euclidean counterpart, boosting
+                                one-class face anti-spoofing performance.
+                            </li>
+                            <li> We propose Hyperbolic Pairwise Confusion Loss (Hyp-PC), that operates on the hyperbolic
+                                space inducing confusion within
+                                the hyperbolic feature space, effectively stripping away identity information. Such
+                                disruption of features helps to
+                                learn better feature representations for the face anti-spoofing task.
+                            </li>
+                            <li> We provide a hyperbolic formation of cross-entropy loss (Hyp-CE), that uses hyperbolic
+                                softmax logits and penalizes the
+                                network for every misclassification.
+                            </li>
+                        </ul>
+
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <!--/ Abstract. -->
+
+            <!-- Paper video. -->
+
+            <section class="section">
+                <div class="container is-max-desktop">
+                    <!-- Abstract. -->
+                    <div class="columns is-centered has-text-centered">
+                        <div class="column is-four-fifths">
+                            <h2 class="title is-3">Hyp-OC Framework</h2>
+                            <div class="content has-text-justified">
+                                <h5 class="subtitle has-text-centered"></h5>
+
+                                <img src="./static/images/framework.png" alt="" border=0 height=500 width=1500></img></
+                                    <p>
+                                Overview of the proposed pipeline: Hyp-OC. The encoder extracts facial features which
+                                are used to estimate the mean of
+                                Gaussian distribution utilized to sample pseudo-negative points. The real features and
+                                pseudo-negative features are then
+                                concatenated and passed to FCNN for dimensionality reduction. The low-dimension features
+                                are mapped to Poincaré Ball
+                                using exponential map. The training objective is to minimize the summation of the
+                                proposed loss functions Hyp-PC and
+                                Hyp-CE. The result is a separating gyroplane beneficial for one-class face
+                                anti-spoofing.
+                                </p>
+
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="section">
+                <div class="container is-max-desktop">
+                    <!-- Abstract. -->
+                    <div class="columns is-centered has-text-centered">
+                        <div class="column is-four-fifths">
+                            <h2 class="title is-3">Results</h2>
+                            <div class="content has-text-justified">
+                                <h5 class="subtitle has-text-centered"></h5>
+                                <img src="./static/images/intra_domain.png" alt="" border="0" height=500
+                                    width=1500></img>
+                                </ </div>
+                                <p>
+                                    Results of intra-domain performance.
+                                </p>
+                            </div>
+                            <div class="content has-text-justified">
+                                <h5 class="subtitle has-text-centered"></h5>
+                                <img src="./static/images/inter_domain_1.png" alt="" border=0 height=500
+                                    width=1500></img></ <p>
+                                Results of inter-domain performance (single-source-single-target-setting).
+                                </p>
+                            </div>
+                            <div class="content has-text-justified">
+                                <h5 class="subtitle has-text-centered"></h5>
+                                <img src="./static/images/inter_domain_2.png" alt="" border=0 height=500
+                                    width=1500></img></ <p>
+                                Results of inter-domain performance (leave-one-out-setting).
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+
+            <section class="section" id="BibTeX">
+                <div class="container content is-max-desktop">
+                    <h2 class="title">BibTeX</h2>
+                    <pre><code>@article{narayan2024hyp,
+  title={Hyp-OC: Hyperbolic One Class Classification for Face Anti-Spoofing},
+  author={Narayan, Kartik and Patel, Vishal M},
+  journal={arXiv preprint arXiv:2404.14406},
+  year={2024}
+}
+</code></pre>
+                </div>
+            </section>
+
+            <section class="section">
+                <div class="container is-max-desktop content">
+                    <h5 class="title" style="font-size: 10px;"> Acknowledgement: The website template is taken from
+                        <span class="author-block">
+                            <a href="https://nerfies.github.io/" target="_blank">Nerfies</a>
+                    </h5>
+
+                </div>
+            </section>
+
+            <script>
+                const viewers = document.querySelectorAll(".image-compare");
+                viewers.forEach((element) => {
+                    let view = new ImageCompare(element, {
+                        hoverStart: true,
+                        addCircle: true
+                    }).mount();
+                });
+
+                $(document).ready(function () {
+                    var editor = CodeMirror.fromTextArea(document.getElementById("bibtex"), {
+                        lineNumbers: false,
+                        lineWrapping: true,
+                        readOnly: true
+                    });
+                    $(function () {
+                        $('[data-toggle="tooltip"]').tooltip()
+                    })
+                });
+            </script>
+</body>
+
+</html>
