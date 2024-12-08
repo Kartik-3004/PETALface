@@ -14,7 +14,7 @@
         }
     </style>
 
-    <title>Hyp-OC</title>
+    <title>PETALface</title>
 
     <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
 
@@ -48,28 +48,43 @@
             <div class="container is-max-desktop">
                 <div class="columns is-centered">
                     <div class="column has-text-centered">
-                        <h1 class="title is-2 publication-title"> PETAL<i>face</i>: Parameter Efficient Transfer
+                        <h1 class="title is-2 publication-title"> PETAL<i>face</i> : Parameter Efficient Transfer
                             Learning<br>for Low-resolution Face Recognition
                         </h1>
-                        <h2 style="font-size: 1.5em; color: dimgray; margin-bottom: .5em; margin-top: -.5em;">FG 2024
+                        <h2 style="font-size: 1.5em; color: dimgray; margin-bottom: .5em; margin-top: -.5em;">WACV 2025
                         </h2>
                         <div class="is-size-5 publication-authors">
                             <!-- Group of first four authors -->
                             <div class="authors-group">
                                 <span class="author-block">
                                     <a href="https://kartik-3004.github.io/portfolio/" target="_blank">Kartik
-                                        Narayan</a>,
+                                        Narayan</a><sup>1</sup>,
+                                </span>
+                                <span class="author-block">
+                                    <a href="https://nithin-gk.github.io" target="_blank">Nithin
+                                        Gopalakrishnan Nair
+                                    </a><sup>1</sup>,
+                                </span>
+                                <span class="author-block">
+                                    <a href="https://scholar.google.com/citations?hl=en&user=iFy2JdkAAAAJ&view_op=list_works&sortby=pubdate"
+                                        target="_blank">Jennifer Xu
+                                    </a><sup>2</sup>,
+                                </span>
+                                <span class="author-block">
+                                    <a href="https://engineering.jhu.edu/faculty/rama-chellappa/" target="_blank">Rama
+                                        Chellappa</a><sup>1</sup>,
                                 </span>
                                 <span class="author-block">
                                     <a href="https://scholar.google.com/citations?user=AkEXTbIAAAAJ&hl=en"
-                                        target="_blank">Vishal M. Patel</a>
+                                        target="_blank">Vishal M. Patel</a><sup>1</sup>
                                 </span>
                             </div>
                         </div>
 
 
                         <div class="is-size-5 publication-authors">
-                            <span class="author-block">Johns Hopkins University</span>
+                            <span class="author-block">Johns Hopkins University<sup>1</sup>,</span>
+                            <span class="author-block">Systems and Technology Research<sup>2</sup></span>
                         </div>
 
                         <div class="column has-text-centered">
@@ -99,7 +114,7 @@
                 </a>
               </span> -->
                                 <span class="link-block">
-                                    <a href="https://arxiv.org/pdf/2404.14406.pdf"
+                                    <a href="https://github.com/Kartik-3004/PETALface"
                                         class="external-link button is-normal is-rounded is-dark">
                                         <span class="icon">
                                             <i class="ai ai-arxiv"></i>
@@ -108,7 +123,7 @@
                                     </a>
                                 </span>
                                 <span class="link-block">
-                                    <a href="https://github.com/Kartik-3004/hyp-oc"
+                                    <a href="https://github.com/Kartik-3004/PETALface"
                                         class="external-link button is-normal is-rounded is-dark">
                                         <span class="icon">
                                             <i class="fab fa-github"></i>
@@ -117,7 +132,7 @@
                                     </a>
                                 </span>
                                 <span class="link-block">
-                                    <a href="https://huggingface.co/kartiknarayan/hyp-oc"
+                                    <a href="https://huggingface.co/kartiknarayan/PETALface"
                                         class="external-link button is-normal is-rounded is-dark">
                                         <span>Huggingface Model</span>
                                     </a>
@@ -136,38 +151,59 @@
             <!-- Abstract. -->
             <div class="columns is-centered has-text-centered">
                 <div class="column is-four-fifths">
-
                     <h2 class="title is-3">Motivation & Contribution</h2>
-                    <img src="./static/images/visual_abstract.png" alt="" border="0" height="300" width="750">
+                    <img src="./static/images/intro_figure.png" alt="" border="0" height="300" width="750">
                     <div class="content has-text-justified">
-                        <p>Face recognition technology has become an integral part of modern security systems and user
-                            authentication processes.
-                            However, these systems are vulnerable to spoofing attacks and can easily be circumvented.
-                            Most prior research in face
-                            anti-spoofing (FAS) approaches it as a two-class classification task where models are
-                            trained on real samples and known
-                            spoof attacks and tested for detection performance on unknown spoof attacks. However, in
-                            practice, FAS should be treated
-                            as a one-class classification task where, while training, one cannot assume any knowledge
-                            regarding the spoof samples a
-                            priori. Hyp-OC, is the first work exploring hyperbolic embeddings for one-class face
-                            anti-spoofing (OC-FAS).
+                        <p>Figure 1. (a) An illustration of the gallery and probe images from low-resolution dataset
+                            (BRIAR).
+                            Gallery images usually are high quality compared to the probe images. (b) t-SNE plot for the
+                            gallery and probe images of the BRIAR dataset. (c) Average CNN-IQA scores of gallery and
+                            probe images for 50 identities of the BRIAR dataset.
+                        </p>
+                        <img src="./static/images/visual_abstract.png" alt="" border="0" height="300" width="750">
+                        <p>Figure 2. The proposed PETAL<i>face</i>: a parameter efficient transfer learning approach
+                            adapts to low-resolution datasets
+                            beating the performance of pre-trained models with negligible drop in performance on
+                            high-resolution and mixed-quality
+                            datasets. PETAL<i>face</i> enables development of generalized models achieving competitive
+                            performance on
+                            high-resolution (LFW, CFP-FP, CPLFW, AgeDB, CALFW, CFP-FF) and mixed-quality datasets
+                            (IJB-B, IJB-C) with big
+                            enhancements in low-quality surveillance quality datasets (TinyFace, BRIAR, IJB-S)
+                        </p>
+                        <p>Low-resolution datasets contain images with poor clarity, making it challenging to extract
+                            meaningful discriminative features essential for face recognition and verification.
+                            Moreover, low-resolution datasets are usually small, with a limited number of subjects, as
+                            curating them requires significant time, effort, and investment.
+                            Existing methods force the learning of high-resolution and low-resolution face images in a
+                            single encoder, failing to account for the domain differences between them. From Figure
+                            1(a),
+                            1(b), and 1(c), we observe that high-quality gallery images and low-quality probe images
+                            belong to distinct domains, and require separate encoders to extract meaningful features for
+                            classification. A naive approach to adapting pre-trained models to low-resolution datasets
+                            is supervised full fine-tuning on these
+                            datasets. However, as mentioned, low-resolution datasets
+                            are small in size, and updating a model with a large number
+                            of parameters on a small low-resolution dataset results in
+                            poor convergence. This makes the model prone to catastrophic forgetting and we see a drop in
+                            performance on
+                            high-resolution and mixed-quality datasets, as shown in Figure 2. With the above motivation,
                         </p>
                         <ul>
                             <li>
-                                We show that using hyperbolic space helps learn a better decision boundary than the
-                                Euclidean counterpart, boosting
-                                one-class face anti-spoofing performance.
+                                We introduce the use of the LoRA-based PETL technique to adapt large pre-trained
+                                face-recognition mod-
+                                els to low-resolution datasets.
                             </li>
-                            <li> We propose Hyperbolic Pairwise Confusion Loss (Hyp-PC), that operates on the hyperbolic
-                                space inducing confusion within
-                                the hyperbolic feature space, effectively stripping away identity information. Such
-                                disruption of features helps to
-                                learn better feature representations for the face anti-spoofing task.
+                            <li> We propose an image-quality-based weighting of
+                                LoRA modules to create separate proxy encoders for
+                                high-resolution and low-resolution data, ensuring effective extraction of embeddings for
+                                face recognition.
                             </li>
-                            <li> We provide a hyperbolic formation of cross-entropy loss (Hyp-CE), that uses hyperbolic
-                                softmax logits and penalizes the
-                                network for every misclassification.
+                            <li> We demonstrate the superiority of PETALface in
+                                adapting to low-resolution datasets, outperforming other state-of-the-art models on
+                                low-resolution
+                                benchmarks while maintaining performance on high-resolution and mixed-quality datasets.
                             </li>
                         </ul>
 
@@ -184,22 +220,21 @@
                     <!-- Abstract. -->
                     <div class="columns is-centered has-text-centered">
                         <div class="column is-four-fifths">
-                            <h2 class="title is-3">Hyp-OC Framework</h2>
+                            <h2 class="title is-3">PETAL<i>face</i> Framework</h2>
                             <div class="content has-text-justified">
                                 <h5 class="subtitle has-text-centered"></h5>
 
-                                <img src="./static/images/framework.png" alt="" border=0 height=500 width=1500></img></
-                                    <p>
-                                Overview of the proposed pipeline: Hyp-OC. The encoder extracts facial features which
-                                are used to estimate the mean of
-                                Gaussian distribution utilized to sample pseudo-negative points. The real features and
-                                pseudo-negative features are then
-                                concatenated and passed to FCNN for dimensionality reduction. The low-dimension features
-                                are mapped to Poincaré Ball
-                                using exponential map. The training objective is to minimize the summation of the
-                                proposed loss functions Hyp-PC and
-                                Hyp-CE. The result is a separating gyroplane beneficial for one-class face
-                                anti-spoofing.
+                                <img src="./static/images/petalface.png" alt="" border=0 height=500 width=1500></img>
+                                <p>
+                                    Overview of the proposed PETAL<i>face</i> approach: We include an additional
+                                    trainable module in linear layers present in attention layers and the final feature
+                                    projection
+                                    MLP. The trainable module is highlighted on the right. Specifically, we add two LoRA
+                                    layers, where the weightage
+                                    &#x03B1; is decided based on the input-image quality, computed using an
+                                    off-the-shelf image quality assessment network
+                                    (IQA).
+
                                 </p>
 
 
@@ -211,82 +246,81 @@
 
             <section class="section">
                 <div class="container is-max-desktop">
-                    <!-- Abstract. -->
                     <div class="columns is-centered has-text-centered">
                         <div class="column is-four-fifths">
                             <h2 class="title is-3">Results</h2>
                             <div class="content has-text-justified">
                                 <h5 class="subtitle has-text-centered"></h5>
-                                <img src="./static/images/intra_domain.png" alt="" border="0" height=500
-                                    width=1500></img>
-                                </ </div>
+                                <img src="./static/images/tinyface.png" alt="" border="0" height=500 width=1500></img>
                                 <p>
-                                    Results of intra-domain performance.
+                                    Table 1. The models are fine-tuned on train set of TinyFace and tested on several
+                                    high-resolution, mixed-quality and TinyFace
+                                    dataset. PETAL<i>face</i> adapts to the low-resolution data achieving SOTA
+                                    results, preserving its performance on
+                                    other datasets. [<span style="color: blue; font-weight: bold;">BLUE</span>]
+                                    indicates
+                                    the best results for
+                                    models trained on
+                                    WebFace4M.
                                 </p>
                             </div>
                             <div class="content has-text-justified">
                                 <h5 class="subtitle has-text-centered"></h5>
-                                <img src="./static/images/inter_domain_1.png" alt="" border=0 height=500
-                                    width=1500></img></ <p>
-                                Results of inter-domain performance (single-source-single-target-setting).
-                                </p>
-                            </div>
-                            <div class="content has-text-justified">
-                                <h5 class="subtitle has-text-centered"></h5>
-                                <img src="./static/images/inter_domain_2.png" alt="" border=0 height=500
-                                    width=1500></img></ <p>
-                                Results of inter-domain performance (leave-one-out-setting).
+                                <img src="./static/images/briar_ijbs.png" alt="" border=0 height=500 width=1500></img>
+                                <p>
+                                    Table 2. The models are fine-tuned on the BRIAR dataset and tested using BRIAR
+                                    Protocol
+                                    3.1 and
+                                    the IJB-S dataset.
+                                    [<span style="color: blue; font-weight: bold;">BLUE</span>] indicates the best
+                                    results
+                                    for models trained on WebFace4M.
                                 </p>
                             </div>
                         </div>
                     </div>
                 </div>
-            </section>
+        </div>
+    </section>
 
 
-            <section class="section" id="BibTeX">
-                <div class="container content is-max-desktop">
-                    <h2 class="title">BibTeX</h2>
-                    <pre><code>@article{narayan2024hyp,
-  title={Hyp-OC: Hyperbolic One Class Classification for Face Anti-Spoofing},
-  author={Narayan, Kartik and Patel, Vishal M},
-  journal={arXiv preprint arXiv:2404.14406},
-  year={2024}
-}
-</code></pre>
-                </div>
-            </section>
+    <section class="section" id="BibTeX">
+        <div class="container content is-max-desktop">
+            <h2 class="title">BibTeX</h2>
+            <pre>Coming soon !!!</pre>
+        </div>
+    </section>
 
-            <section class="section">
-                <div class="container is-max-desktop content">
-                    <h5 class="title" style="font-size: 10px;"> Acknowledgement: The website template is taken from
-                        <span class="author-block">
-                            <a href="https://nerfies.github.io/" target="_blank">Nerfies</a>
-                    </h5>
+    <section class="section">
+        <div class="container is-max-desktop content">
+            <h5 class="title" style="font-size: 10px;"> Acknowledgement: The website template is taken from
+                <span class="author-block">
+                    <a href="https://nerfies.github.io/" target="_blank">Nerfies</a>
+            </h5>
 
-                </div>
-            </section>
+        </div>
+    </section>
 
-            <script>
-                const viewers = document.querySelectorAll(".image-compare");
-                viewers.forEach((element) => {
-                    let view = new ImageCompare(element, {
-                        hoverStart: true,
-                        addCircle: true
-                    }).mount();
-                });
+    <script>
+        const viewers = document.querySelectorAll(".image-compare");
+        viewers.forEach((element) => {
+            let view = new ImageCompare(element, {
+                hoverStart: true,
+                addCircle: true
+            }).mount();
+        });
 
-                $(document).ready(function () {
-                    var editor = CodeMirror.fromTextArea(document.getElementById("bibtex"), {
-                        lineNumbers: false,
-                        lineWrapping: true,
-                        readOnly: true
-                    });
-                    $(function () {
-                        $('[data-toggle="tooltip"]').tooltip()
-                    })
-                });
-            </script>
+        $(document).ready(function () {
+            var editor = CodeMirror.fromTextArea(document.getElementById("bibtex"), {
+                lineNumbers: false,
+                lineWrapping: true,
+                readOnly: true
+            });
+            $(function () {
+                $('[data-toggle="tooltip"]').tooltip()
+            })
+        });
+    </script>
 </body>
 
 </html>
