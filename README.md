@@ -25,7 +25,7 @@ Figure 1. (a) An illustration of the gallery and probe images from low-resolutio
 <p align="center" width="100%">
   <img src='docs/static/images/visual_abstract.png' height="75%" width="75%">
 </p>
-Figure 2. The proposed PETALface: a parameter efficient transfer learning approach adapts to low-resolution datasets beating the performance of pre-trained models with negligible drop in performance on high-resolution and mixed-quality datasets. PETALface enables development of generalized models achieving competitive performance on high-resolution (LFW, CFP-FP, CPLFW, AgeDB, CALFW, CFP-FF) and mixed-quality datasets (IJB-B, IJB-C) with big enhancements in low-quality datasets (TinyFace, BRIAR, IJB-S)
+Figure 2. The proposed PETALface: a parameter efficient transfer learning approach adapts to low-resolution datasets beating the performance of pre-trained models with negligible drop in performance on high-resolution and mixed-quality datasets. PETALface enables development of generalized models achieving competitive performance on high-resolution (LFW, CFP-FP, CPLFW, AgeDB, CALFW, CFP-FF) and mixed-quality datasets (IJB-B, IJB-C) with big enhancements in low-quality datasets (TinyFace, BRIAR, IJB-S).
 <br><br>
 
 
