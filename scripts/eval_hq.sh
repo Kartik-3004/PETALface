@@ -7,7 +7,7 @@ CUDA_VISIBLE_DEVICES=0 python validation_hq/validate_hq_iqa.py \
     --lora_rank 8 \
     --use_lora \
     --iqa cnniqa \
-    --threshold threshold
+    --threshold <threshold>
 
 ### BRISQUE ###
 CUDA_VISIBLE_DEVICES=0 python validation_hq/validate_hq_iqa.py \
@@ -18,7 +18,7 @@ CUDA_VISIBLE_DEVICES=0 python validation_hq/validate_hq_iqa.py \
     --lora_rank 8 \
     --use_lora \
     --iqa brisque \
-    --threshold 0.5
+    --threshold <threshold>
 
 ### LoRA ###
 CUDA_VISIBLE_DEVICES=0 python validation_hq/validate_hq.py \
