@@ -32,7 +32,7 @@ Figure 2. The proposed PETALface: a parameter efficient transfer learning approa
 Low-resolution datasets contain images with poor clarity, making it challenging to extract meaningful discriminative features essential for face recognition and verification. Moreover, low-resolution datasets are usually small, with a limited number of subjects, as curating them requires significant time, effort, and investment. Existing methods force the learning of high-resolution and low-resolution face images in a single encoder, failing to account for the domain differences between them. From Figure 1(a), 1(b), and 1(c), we observe that high-quality gallery images and low-quality probe images belong to distinct domains, and require separate encoders to extract meaningful features for classification. A naive approach to adapting pre-trained models to low-resolution datasets is supervised full fine-tuning on these datasets. However, as mentioned, low-resolution datasets are small in size, and updating a model with a large number of parameters on a small low-resolution dataset results in poor convergence. This makes the model prone to catastrophic forgetting and we see a drop in performance on high-resolution and mixed-quality datasets, as shown in Figure 2. 
 
 
-With the above motivation,
+With the above motivation,<br>
 1️⃣ We introduce the use of the LoRA-based PETL technique to adapt large pre-trained face-recognition models to low-resolution datasets.<br>
 2️⃣ We propose an image-quality-based weighting of LoRA modules to create separate proxy encoders for high-resolution and low-resolution data, ensuring effective extraction of embeddings for face recognition.<br>
 3️⃣ We demonstrate the superiority of PETALface in adapting to low-resolution datasets, outperforming other state-of-the-art models on low-resolution benchmarks while maintaining performance on high-resolution and mixed-quality datasets.<br>
@@ -69,99 +69,203 @@ conda activate petalface
 
 # Download Data
 The datasets can be downloaded from their respective webpages or by mailing the authors:<br>
-1. [Idiap Replay Attack](https://www.idiap.ch/en/scientific-research/data/replayattack)<br>
-2. [MSU MFSD](https://sites.google.com/site/huhanhomepage/datasetcode)<br>
-3. [CASIA MFSD](https://ieeexplore.ieee.org/document/6199754)<br>
-4. [OULU-NPU](https://sites.google.com/site/oulunpudatabase/)<br>
-5. [ROSEYoutu](https://rose1.ntu.edu.sg/dataset/faceLivenessDetection/)<br>
+1. [WebFace4M, WebFace12M](https://www.face-benchmark.org/)<br>
+2. [TinyFace](https://qmul-tinyface.github.io/)<br>
+3. [BRIAR](https://openaccess.thecvf.com/content/WACV2023W/LRR/papers/Cornett_Expanding_Accurate_Person_Recognition_to_New_Altitudes_and_Ranges_The_WACVW_2023_paper.pdf)<br>
+4. [IJB-S](https://biometrics.cse.msu.edu/Publications/Face/Kalkaetal_IJBSIARPPAJanusSurveillanceVideoBenchmark_BTAS2018.pdf)<br>
+5. [IJB-B, IJB-C](https://github.com/deepinsight/insightface/tree/master/recognition/_evaluation_/ijb)<br>
+6. [LFW](https://drive.google.com/file/d/1iGYoCyhpq-Pi9Trpe7wrDs_J88Prz8ck/view?usp=sharing)<br>
+7. [CFP-FP](https://drive.google.com/file/d/1lhDVa0QG3yWkWOgPIUZePQRsxvf274YG/view?usp=sharing)<br>
+8. [CPLFW](https://drive.google.com/file/d/1MSA_grs6JAlyNQ3v7Dulc1URfupQZiJ3/view?usp=sharing)<br>
+9. [AgeDB-30](https://drive.google.com/file/d/1HwIyBR429B7aOsghST59Styr3K90O2Ek/view?usp=sharing)<br>
+10. [CALFW](https://drive.google.com/file/d/1_xAoOaAjVXhaG5JfzzXnZyQHrB81X0zS/view?usp=sharing)<br>
+11. [CFP-FF](https://drive.google.com/file/d/1HnQf1sfzxEhk2QItsXAXsgV3TXBbElIS/view?usp=sharing)<br>
 
 Arrange the dataset in the following manner:
 ```python
-.
-├── datasets
-│   ├── ReplayAttack
-│   │   ├── train_frames
-│   │   ├── test_frames
-│   │   ├── devel_frames
-│   ├── MSU MFSD
-│   │   ├── train
-│   │   ├── test
-│   ├── CASIA MFSD
-│   │   ├── train
-│   │   ├── test
-│   ├── OULU_NPU
-│   │   ├── Train_frames
-│   │   ├── Test_frames
-│   │   ├── Dev_frames
-│   │   ├── Protocols
-│   ├── ROSEYoutu
-│   │   ├── client
-│   │   │   ├── rgb
-│   │   │   │   ├── adaptation
-│   │   │   │   ├── test
+data/
+├── BRIAR/
+│   ├── train_set_1/
+│   │   ├── train.idx
+│   │   ├── train.lst
+│   │   └── train.rec
+│   └── train_set_2/
+│       ├── train.idx
+│       ├── train.lst
+│       └── train.rec
+├── HQ_val/
+│   ├── agedb_30.bin
+│   ├── calfw.bin
+│   ├── cfp_ff.bin
+│   ├── cfp_fp.bin
+│   ├── cplfw.bin
+│   └── lfw.bin
+├── ijb/
+│   ├── IJB_11.py
+│   ├── IJBB/
+│   ├── IJBC/
+│   ├── recognition/
+│   └── run.sh
+├── IJBS/
+│   ├── ijbs_participant_publication_consent.csv
+│   ├── img/
+│   ├── img.md5
+│   ├── protocols/
+│   ├── README.pdf
+│   ├── videos/
+│   ├── videos.md5
+│   ├── videos_ground_truth/
+│   └── videos_ground_truth.md5
+├── tinyface_aligned_112/
+│   ├── Gallery_Distractor/
+│   ├── Gallery_Match/
+│   ├── Probe/
+│   ├── train.idx
+│   ├── train.lst
+│   └── train.rec
+├── WebFace12M/
+│   ├── train.idx
+│   ├── train.lst
+│   └── train.rec
+└── WebFace4M/
+    ├── train.idx
+    ├── train.lst
+    └── train.rec
 ```
-NOTE: The train, test and eval splits are provided in the /data/ folder.
 
-# Download Pre-trained weights
+# Download Model weights
 The pre-traind model can be downloaded manually from [HuggingFace](https://huggingface.co/kartiknarayan/petalface) or using python:
 ```python
 from huggingface_hub import hf_hub_download
 
-hf_hub_download(repo_id="kartiknarayan/petalface", filename="pretrained_weights/vgg_face_dag.pth", local_dir="./")
-```
-The directory structure should finally be:
+# Finetuned Weights
 
-```
-  . ── hyp-oc ──┌── pretrained_weights/vgg_face_dag.pth
-                ├── data
-                ├── hyptorch
-                ├── config.py
-                ├── dataloader.py
-                ├── loss.py
-                ├── models.py
-                ├── statistics.py
-                ├── train.py
-                ├── test.py
-                └── utils.py                    
+# The filename "swin_arcface_webface4m_tinyface" indicates that the model has a swin bakcbone and pretraind
+# on webface4m dataset with arcface loss function and finetuned on tinyface.
+hf_hub_download(repo_id="kartiknarayan/petalface", filename="swin_arcface_webface4m_tinyface/model.pt", local_dir="./weights")
+hf_hub_download(repo_id="kartiknarayan/petalface", filename="swin_cosface_webface4m_tinyface/model.pt", local_dir="./weights")
+hf_hub_download(repo_id="kartiknarayan/petalface", filename="swin_cosface_webface4m_briar/model.pt", local_dir="./weights")
+hf_hub_download(repo_id="kartiknarayan/petalface", filename="swin_cosface_webface12m_briar/model.pt", local_dir="./weights")
+
+# Pre-trained Weights
+hf_hub_download(repo_id="kartiknarayan/petalface", filename="swin_arcface_webface4m/model.pt", local_dir="./weights")
+hf_hub_download(repo_id="kartiknarayan/petalface", filename="swin_cosface_webface4m/model.pt", local_dir="./weights")
+hf_hub_download(repo_id="kartiknarayan/petalface", filename="swin_arcface_webface12m/model.pt", local_dir="./weights")
+hf_hub_download(repo_id="kartiknarayan/petalface", filename="swin_cosface_webface12m/model.pt", local_dir="./weights")
 ```
 
 # Usage
-Download the pre-trained weights from [HuggingFace](https://huggingface.co/kartiknarayan/petalface) and ensure the directory structure is correct.<br>
+Download the pre-trained weights from [HuggingFace](https://huggingface.co/kartiknarayan/petalface) and ensure the data is downloaded with appropriate directory structure.<br>
 
 ### Training
 ```python
-  python train.py \
-      --expt_name roseyoutu \
-      --dataset ROSEYoutu \
-      --device 0 \
-      --epochs 60 \
-      --batch_size_train 8 \
-      --batch_size_val 128 \
-      --val_check_after_epoch 1 \
-      --save_for_each_val_epoch True \
-      --optim_lr 1e-6 \
-      --optim_weight_decay 1e-6 \
-      --std_dev 1 \
-      --feature_dimension 4096 \
-      --alpha 0.8 \
-      --curvature 0.1
+### BRISQUE | CosFace | TinyFace ###
+NCCL_P2P_DISABLE=1 CUDA_VISIBLE_DEVICES=0,1,2,3,4,5,6,7 torchrun --nproc_per_node=8 --master_port=29190 train_iqa.py \
+    --network swin_256new_iqa \
+    --head partial_fc \
+    --output /mnt/store/knaraya4/PETALface/<model_save_folder> \
+    --margin_list 1.0,0.0,0.4 \
+    --batch-size 8 \
+    --optimizer adamw \
+    --weight_decay 0.1 \
+    --rec /data/knaraya4/data/<folder_to_rec_file> \
+    --num_classes 2570 \
+    --num_image 7804 \
+    --num_epoch 50 \
+    --lr 0.0005 \
+    --fp16 \
+    --warmup_epoch 2 \
+    --image_size 120 \
+    --use_lora \
+    --lora_rank 8 \
+    --iqa brisque \
+    --threshold <threshold> \
+    --seed 19 \
+    --load_pretrained /mnt/store/knaraya4/PETALface/<path_to_pretrained_model>
 
-# -- dataset = [ROSEYoutu, ReplayAttack, CASIA_MFSD, MSU_MFSD, OULU_NPU, OCI, OMI, OCM, ICM]
+###
+# For CosFace, --margin_list 1.0,0.0,0.4; For ArcFace, --margin_list 1.0,0.5,0.0
+# For BRISQUE, --iqa brisque; For CNNIQA, --iqa cnniqa; set the threshold accordingly
+# For TinyFace,
+#   --num_classes 2570
+#   --num_image 7804
+#   --num_epoch 40
+#   --warmup_epoch 2
+# For BRIAR,
+#   --num_classes 778
+#   --num_image 301000
+#   --num_epoch 10
+#   --warmup_epoch 1
+###
 ```
-The trained models are stored in the specified "save_root".<br>
-The training logs can be seen at "log_root"
+The trained models are stored in the specified "ouptut".<br>
+<b>NOTE</b>: The training scripts for pretraining and LoRA finetuning are provided in [PETALface/scripts](scripts).
 
 ### Inference
 ```python
-python test.py \
-    --source_dataset ReplayAttack \
-    --target_dataset MSU_MFSD \
-    --device 0 \
-    --curvature 0.1 \
-    --batch_size_test 32 \
-    --list replayattack
+# Validation HQ dataset
+CUDA_VISIBLE_DEVICES=0 python validation_hq/validate_hq_iqa.py \
+    --model_load_path /mnt/store/knaraya4/PETALface/<folder_name>/model.pt \
+    --data_root /data/knaraya4/data/<hq_dataset_folder> \
+    --model_type swin_256new_iqa  \
+    --image_size 120 \
+    --lora_rank 8 \
+    --use_lora \
+    --iqa cnniqa \
+    --threshold threshold
+
+# Validation Mixed Quality Dataset | IJBC
+CUDA_VISIBLE_DEVICES=0 python validation_ijb/eval_ijb_iqa.py \
+    --model_load_path /mnt/store/knaraya4/PETALface/<folder_name>/model.pt \
+    --data_root /data/knaraya4/data/ijb/<ijbc_dataset_folder> \
+    --batch-size 1024 \
+    --model_type swin_256new_iqa \
+    --target IJBC \
+    --image_size 120 \
+    --lora_rank 8 \
+    --use_lora \
+    --iqa cnniqa \
+    --threshold <threshold>
+
+# Validation Mixed Quality Dataset | IJBB
+CUDA_VISIBLE_DEVICES=0 python validation_ijb/eval_ijb_iqa.py \
+    --model_load_path /mnt/store/knaraya4/PETALface/<folder_name>/model.pt \
+    --data_root /data/knaraya4/data/<ijbb_dataset_folder> \
+    --batch-size 1024 \
+    --model_type swin_256new_iqa \
+    --target IJBB \
+    --image_size 120 \
+    --lora_rank 8 \
+    --use_lora \
+    --iqa cnniqa \
+    --threshold <threshold>
+
+# Validation Low-quality Dataset | TinyFace
+CUDA_VISIBLE_DEVICES=0 python validation_lq/validate_tinyface_iqa.py \
+    --data_root /data/knaraya4/data \
+    --batch_size 512 \
+    --model_load_path /mnt/store/knaraya4/PETALface/<folder_name>/model.pt \
+    --model_type swin_256new_iqa \
+    --image_size 120 \
+    --lora_rank 8 \
+    --use_lora \
+    --iqa cnniqa \
+    --threshold <threshold>
+
+# Validation Low-quality Dataset | IJBS
+CUDA_VISIBLE_DEVICES=0 python validation_lq/validate_ijbs_iqa.py \
+    --data_root /mnt/store/knaraya4/data/<ijbs_dataset_folder> \
+    --batch_size 2048 \
+    --model_load_path /mnt/store/knaraya4/PETALface/<folder_name>/model.pt \
+    --model_type swin_256new_iqa \
+    --image_size 120 \
+    --lora_rank 8 \
+    --use_lora \
+    --iqa cnniqa \
+    --threshold <threshold>
+
 ```
---list contains "," separated experiment names performed on the --source_dataset.
+<b>NOTE</b>: The inference scripts are provided in [PETALface/scripts](scripts).
 
 ## Citation
 If you find PETAL*face* useful for your research, please consider citing us:
