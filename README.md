@@ -25,7 +25,7 @@ Figure 1. (a) An illustration of the gallery and probe images from low-resolutio
 <p align="center" width="100%">
   <img src='docs/static/images/visual_abstract.png' height="75%" width="75%">
 </p>
-Figure 2. The proposed PETALface: a parameter efficient transfer learning approach adapts to low-resolution datasets beating the performance of pre-trained models with negligible drop in performance on high-resolution and mixed-quality datasets. PETALface enables development of generalized models achieving competitive performance on high-resolution (LFW, CFP-FP, CPLFW, AgeDB, CALFW, CFP-FF) and mixed-quality datasets (IJB-B, IJB-C) with big enhancements in low-quality datasets (TinyFace, BRIAR, IJB-S).
+Figure 2. The proposed PETAL<i>face</i>: a parameter efficient transfer learning approach adapts to low-resolution datasets beating the performance of pre-trained models with negligible drop in performance on high-resolution and mixed-quality datasets. PETAL<i>face</i> enables development of generalized models achieving competitive performance on high-resolution (LFW, CFP-FP, CPLFW, AgeDB, CALFW, CFP-FF) and mixed-quality datasets (IJB-B, IJB-C) with big enhancements in low-quality datasets (TinyFace, BRIAR, IJB-S).
 <br><br>
 
 
@@ -35,7 +35,7 @@ Low-resolution datasets contain images with poor clarity, making it challenging 
 With the above motivation,<br>
 1️⃣ We introduce the use of the LoRA-based PETL technique to adapt large pre-trained face-recognition models to low-resolution datasets.<br>
 2️⃣ We propose an image-quality-based weighting of LoRA modules to create separate proxy encoders for high-resolution and low-resolution data, ensuring effective extraction of embeddings for face recognition.<br>
-3️⃣ We demonstrate the superiority of PETALface in adapting to low-resolution datasets, outperforming other state-of-the-art models on low-resolution benchmarks while maintaining performance on high-resolution and mixed-quality datasets.<br>
+3️⃣ We demonstrate the superiority of PETAL<i>face</i> in adapting to low-resolution datasets, outperforming other state-of-the-art models on low-resolution benchmarks while maintaining performance on high-resolution and mixed-quality datasets.<br>
 
 > **<p align="justify"> Abstract:** *Pre-training on large-scale datasets and utilizing margin-based loss functions have
 > been highly successful in training models for high-resolution face recognition. However, these models struggle with
@@ -56,7 +56,7 @@ With the above motivation,<br>
 <p align="center" width="100%">
   <img src='docs/static/images/petalface.png'>
 </p>
-Overview of the proposed PETALface approach: We include an additional trainable module in linear layers present in attention layers and the final feature projection MLP. The trainable module is highlighted on the right. Specifically, we add two LoRA layers, where the weightage α is decided based on the input-image quality, computed using an off-the-shelf image quality assessment network (IQA).
+Overview of the proposed PETAL<i>face</i> approach: We include an additional trainable module in linear layers present in attention layers and the final feature projection MLP. The trainable module is highlighted on the right. Specifically, we add two LoRA layers, where the weightage α is decided based on the input-image quality, computed using an off-the-shelf image quality assessment network (IQA).
 
 # :rocket: News
 - [12/09/2025] 🔥 We release PETAL*face*.
