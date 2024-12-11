@@ -142,16 +142,16 @@ from huggingface_hub import hf_hub_download
 
 # The filename "swin_arcface_webface4m_tinyface" indicates that the model has a swin bakcbone and pretraind
 # on webface4m dataset with arcface loss function and finetuned on tinyface.
-hf_hub_download(repo_id="kartiknarayan/petalface", filename="swin_arcface_webface4m_tinyface/model.pt", local_dir="./weights")
-hf_hub_download(repo_id="kartiknarayan/petalface", filename="swin_cosface_webface4m_tinyface/model.pt", local_dir="./weights")
-hf_hub_download(repo_id="kartiknarayan/petalface", filename="swin_cosface_webface4m_briar/model.pt", local_dir="./weights")
-hf_hub_download(repo_id="kartiknarayan/petalface", filename="swin_cosface_webface12m_briar/model.pt", local_dir="./weights")
+hf_hub_download(repo_id="kartiknarayan/PETALface", filename="swin_arcface_webface4m_tinyface/model.pt", local_dir="./weights")
+hf_hub_download(repo_id="kartiknarayan/PETALface", filename="swin_cosface_webface4m_tinyface/model.pt", local_dir="./weights")
+hf_hub_download(repo_id="kartiknarayan/PETALface", filename="swin_cosface_webface4m_briar/model.pt", local_dir="./weights")
+hf_hub_download(repo_id="kartiknarayan/PETALface", filename="swin_cosface_webface12m_briar/model.pt", local_dir="./weights")
 
 # Pre-trained Weights
-hf_hub_download(repo_id="kartiknarayan/petalface", filename="swin_arcface_webface4m/model.pt", local_dir="./weights")
-hf_hub_download(repo_id="kartiknarayan/petalface", filename="swin_cosface_webface4m/model.pt", local_dir="./weights")
-hf_hub_download(repo_id="kartiknarayan/petalface", filename="swin_arcface_webface12m/model.pt", local_dir="./weights")
-hf_hub_download(repo_id="kartiknarayan/petalface", filename="swin_cosface_webface12m/model.pt", local_dir="./weights")
+hf_hub_download(repo_id="kartiknarayan/PETALface", filename="swin_arcface_webface4m/model.pt", local_dir="./weights")
+hf_hub_download(repo_id="kartiknarayan/PETALface", filename="swin_cosface_webface4m/model.pt", local_dir="./weights")
+hf_hub_download(repo_id="kartiknarayan/PETALface", filename="swin_arcface_webface12m/model.pt", local_dir="./weights")
+hf_hub_download(repo_id="kartiknarayan/PETALface", filename="swin_cosface_webface12m/model.pt", local_dir="./weights")
 ```
 
 # Usage
