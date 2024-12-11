@@ -9,7 +9,7 @@
 Johns Hopkins University<sup>1</sup> &emsp; Systems and Technology Research<sup>2</sup>
 
 <a href='https://kartik-3004.github.io/PETALface/'><img src='https://img.shields.io/badge/Project-Page-blue'></a>
-<a href='[https://arxiv.org/pdf/2404.14406.pdf](https://kartik-3004.github.io/PETALface/)'><img src='https://img.shields.io/badge/Paper-arXiv-red'></a>
+<a href='https://arxiv.org/abs/2412.07771'><img src='https://img.shields.io/badge/Paper-arXiv-red'></a>
 <a href='https://huggingface.co/kartiknarayan/PETALface'><img src='https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-Model-orange'></a>
 
 </div>
@@ -155,7 +155,7 @@ hf_hub_download(repo_id="kartiknarayan/petalface", filename="swin_cosface_webfac
 ```
 
 # Usage
-Download the pre-trained weights from [HuggingFace](https://huggingface.co/kartiknarayan/petalface) and ensure the data is downloaded with appropriate directory structure.<br>
+Download the trained weights from [HuggingFace](https://huggingface.co/kartiknarayan/petalface) and ensure the data is downloaded with appropriate directory structure.<br>
 
 ### Training
 ```python
