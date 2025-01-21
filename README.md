@@ -1,7 +1,7 @@
 <div align="center">
 
 # PETAL*face* : Parameter Efficient Transfer Learning <br> for Low-resolution Face Recognition
-<h3><strong>WACV 2025</strong></h3>
+<h3><strong>WACV 2025 (Oral)</strong></h3>
 
 [Kartik Narayan](https://kartik-3004.github.io/portfolio/)<sup>1</sup> &emsp; [Nithin Gopalakrishnan Nair](https://nithin-gk.github.io/)<sup>1</sup> &emsp; [Jennifer Xu](https://scholar.google.com/citations?hl=en&user=iFy2JdkAAAAJ&view_op=list_works&sortby=pubdate)<sup>2</sup> &emsp; [Rama Chellappa](https://engineering.jhu.edu/faculty/rama-chellappa/)<sup>1</sup> &emsp; [Vishal M. Patel](https://engineering.jhu.edu/faculty/vishal-patel/)<sup>1</sup>
 
