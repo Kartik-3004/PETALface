@@ -271,11 +271,13 @@ CUDA_VISIBLE_DEVICES=0 python validation_lq/validate_ijbs_iqa.py \
 If you find PETAL*face* useful for your research, please consider citing us:
 
 ```bibtex
-@article{narayan2024petalface,
-  title={PETALface: Parameter Efficient Transfer Learning for Low-resolution Face Recognition},
+@inproceedings{narayan2025petalface,
+  title={Petalface: Parameter efficient transfer learning for low-resolution face recognition},
   author={Narayan, Kartik and Nair, Nithin Gopalakrishnan and Xu, Jennifer and Chellappa, Rama and Patel, Vishal M},
-  journal={arXiv preprint arXiv:2412.07771},
-  year={2024}
+  booktitle={2025 IEEE/CVF Winter Conference on Applications of Computer Vision (WACV)},
+  pages={804--814},
+  year={2025},
+  organization={IEEE}
 }
 ```
 
